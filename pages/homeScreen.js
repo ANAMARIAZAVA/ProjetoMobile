@@ -13,7 +13,7 @@ export default function HomeScreen({ route, navigation }) {
 
 // Função para navegar para a tela de Perfil
     const perfil = () => {
-      navigation.navigate('perfil', {
+          navigation.navigate('Perfil', {
   });
 }
 
@@ -23,15 +23,28 @@ export default function HomeScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text> Bem-vindo à Home! </Text>
-      {username && <Text>Usuário Logado: {username}</Text>}
-      <Image source={require('../assets/bike.png')}/>
-      <TouchableOpacity style={styles.button} onPress={produto}>
-              <Text style={styles.textButton}>Produtos</Text>
-            </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={produto}>
-      <Text style={styles.textButton}>perfil</Text>
+      {/* Texto de boas-vindas */}
+      <Text style={styles.welcomeText}>
+          Seja Bem-vindo</Text>
+      {username && <Text> {username}</Text>}
+
+      {/* Imagem da bicicleta */}
+      <Image source={require('../assets/bike.png')}
+      style={styles.bikeImage}
+      />
+      
+      {/* Botão para Perfil */}
+      <TouchableOpacity style={styles.button} onPress={perfil}>
+          <Text style={styles.textButton}>Perfil</Text>
       </TouchableOpacity>
+
+
+      {/* Botão para Produtos */}
+      <TouchableOpacity style={styles.button} onPress={produto}>
+           <Text style={styles.textButton}>Produtos</Text>
+      </TouchableOpacity>
+
+    
       
     </View>
   );
@@ -43,40 +56,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff', // Fundo branco
   },
-  backgroundContainer: {
-    width: '100%',
-    padding: 20,
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
-    alignItems: 'center', // Centraliza o conteúdo
+
+  welcomeText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 20,  // Espaço abaixo do texto de boas-vindas
   },
-  logo: {
-    width: 100,
-    height: 100,
-    marginBottom: 20, // Espaço entre a imagem e os campos de input
-  },
-  inputContainer: {
-    width: '100%',
-    marginBottom: 20,
+  
+  bikeImage: {
+    width: 150,  // tamanho da imagem
+    height: 150,
+    marginBottom: 30,  // abaixo da imagem
   },
   button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'blue',
-    borderRadius: 10,
-    padding: 10,
-    height: 45,
-    width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#8B4513',  // Cor marrom para combinar com a imagem fornecida
+      borderRadius: 10,
+      paddingVertical: 10,
+      width: '80%',  // Largura dos botões para 80% da tela
+      marginBottom: 10,  // Espaço entre os botões
   },
   textButton: {
-    fontSize: 18,
-    color: 'white',
+      fontSize: 18,
+      color: 'white',
+      fontWeight: 'bold',  // Deixar o texto do botão em negrito
   },
 });
